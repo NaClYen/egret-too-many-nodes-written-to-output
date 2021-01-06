@@ -55,3 +55,38 @@ test project for "Too many nodes written to output." issue.
     (node:8572) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not 
     handled with .catch(). (rejection id: 1)
     ```
+
+## 其他發現
+在嘗試製作重現專案時, 發現只要讓 webpack 使用 `modern` 模式, 就不會有這個問題.  
+其 compile 的內容如下:  
+```
+您正在使用白鹭编译器 5.3.10 版本
+正在编译项目...
+Starting type checking service...
+Type checking in progress...
+i ｢wdm｣: Hash: b829e53fa340d3d425a0
+Version: webpack 4.44.1
+Time: 271ms
+Built at: 2021-01-06 11:06:35 AM
+      Asset      Size  Chunks                   Chunk Names
+ index.html   3.3 KiB          [emitted]
+    main.js  20.5 KiB    main  [emitted]        main
+main.js.map  14.7 KiB    main  [emitted] [dev]  main
+Entrypoint main = main.js main.js.map
+Child HtmlWebpackCompiler:
+                          Asset      Size               Chunks  Chunk Names
+    __child-HtmlWebpackPlugin_0  17.1 KiB  HtmlWebpackPlugin_0  HtmlWebpackPlugin_0
+    Entrypoint HtmlWebpackPlugin_0 = __child-HtmlWebpackPlugin_0
+i ｢wdm｣: Compiled successfully.
+No type errors found
+Version: typescript 3.9.7
+Time: 1585 ms
+```
+推測兩種可能:
+1. 強制使用 ES6 Module
+2. 使用了新版 typescript
+
+## 應對
+1. 全面避免多層 namespace 的寫法
+2. 採用 ES6 Module
+3. 避免使用 Webpack, 改回使用 CompilePlugin
