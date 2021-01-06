@@ -85,6 +85,9 @@ Time: 1585 ms
 推測可能是Module解析問題...吧?
 
 ## 應對
-1. 採用 ES6 Module. 最佳解, 但也最難.
-2. 全面避免多層 namespace 的寫法
-3. 避免使用 Webpack, 改回使用 CompilePlugin. 我懂大家都有那包燙手山芋(?)
+1. 採用 ES6 Module.  
+    最佳解, 但也最難.
+2. 全面避免多層 namespace 的寫法.  
+    比較有機會讓老項目延壽的作法.
+3. 避免使用 Webpack, 改回使用 CompilePlugin.  
+    我懂大家都有那包燙手山芋(?) 或者不得已的地方XDD
