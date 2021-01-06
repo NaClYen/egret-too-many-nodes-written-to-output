@@ -82,9 +82,7 @@ No type errors found
 Version: typescript 3.9.7
 Time: 1585 ms
 ```
-推測兩種可能:
-1. 強制使用 ES6 Module
-2. 使用了新版 typescript
+推測可能是Module解析問題...吧?
 
 ## 應對
 1. 全面避免多層 namespace 的寫法
