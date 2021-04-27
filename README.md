@@ -1,6 +1,11 @@
 # egret-too-many-nodes-written-to-output
 test project for "Too many nodes written to output." issue.
 
+## update note
+- 2021/04/27: 根據 [allayli的回饋](https://github.com/NaClYen/egret-too-many-nodes-written-to-output/issues/1#issue-867516174) 新增一項更親民的 workaround.
+
+---
+
 ## 專案設定
 ![](https://i.imgur.com/oujgzbh.png)
 
@@ -91,3 +96,12 @@ Time: 1585 ms
     比較有機會讓老項目延壽的作法.
 3. 避免使用 Webpack, 改回使用 CompilePlugin.  
     我懂大家都有那包燙手山芋(?) 或者不得已的地方XDD
+4. 明確 export 第二層 namespace 即可.
+    ```
+    namespace A {
+        export namespace B{
+            export class TestClass {}
+        }
+    }
+    ```
+    ref: [issue#1](https://github.com/NaClYen/egret-too-many-nodes-written-to-output/issues/1#issue-867516174)
